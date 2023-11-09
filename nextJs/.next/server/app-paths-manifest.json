@@ -1,0 +1,6 @@
+{
+  "/page": "app/page.js",
+  "/StreakDataPage/page": "app/StreakDataPage/page.js",
+  "/AboutPage/page": "app/AboutPage/page.js",
+  "/LoginPage/page": "app/LoginPage/page.js"
+}
