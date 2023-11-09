@@ -1,6 +1,3 @@
 {
-  "/page": "app/page.js",
-  "/StreakDataPage/page": "app/StreakDataPage/page.js",
-  "/AboutPage/page": "app/AboutPage/page.js",
-  "/LoginPage/page": "app/LoginPage/page.js"
+  "/api/auth/[kindeAuth]/route": "app/api/auth/[kindeAuth]/route.js"
 }

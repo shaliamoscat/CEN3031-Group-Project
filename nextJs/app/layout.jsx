@@ -1,11 +1,11 @@
 import Link from 'next/link';
 import NavBar from '../components/NavBar';
 import './globals.css'; 
-import {exo2,roboto} from './fonts';
+import { exo2,roboto } from './fonts';
 
 export default function RootLayout({ children }) {
     return (
-        <html lang="en" className={`${ exo2.variable } ${ roboto.variable }`}>
+        <html lang="en" className={`${exo2.variable} ${ roboto.variable }`}>
             <body className="bg-gray-300 flex flex-col px-4 py-2 min-h-screen">
                 <header className='py-7'>
                    <NavBar />
