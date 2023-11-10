@@ -3,7 +3,7 @@ import MaxWidthWrapper from '@/components/MaxWidthWrapper';
 export default function HomePage() {
     return (
         <>
-            {/* <MaxWidthWrapper className='bg-green-500'><div></div></MaxWidthWrapper> */}
+            <MaxWidthWrapper className='bg-green-500'><div></div></MaxWidthWrapper>
             <Heading> AeroGrow </Heading>
             {/* <p> the app for your basic fitness needs </p> */}
             <p className="font-roboto text-center text-emerald-700"> the goto app for your basic fitness needs</p>
