@@ -39,9 +39,6 @@ export default function Home() {
                 alt="AeroGrow starter plant"
               />
             </div>
-            <div> 
-              
-            </div>
           </div>
         </div>
       </div>

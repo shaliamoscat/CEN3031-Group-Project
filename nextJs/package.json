@@ -47,7 +47,7 @@
     "openai": "^4.10.0",
     "pdf-parse": "^1.1.1",
     "postcss": "8.4.30",
-    "prisma": "^5.3.1",
+    "prisma": "^5.5.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-dropzone": "^14.2.3",
@@ -74,3 +74,4 @@
     "cypress": "^13.5.0"
   }
 }
+

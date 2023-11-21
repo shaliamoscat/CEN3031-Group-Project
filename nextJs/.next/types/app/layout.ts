@@ -1,8 +1,8 @@
-// File: /Users/nike/Documents/SOFTWARE/CEN3031-Group-Project/nextJs/app/layout.jsx
-import * as entry from '../../../app/layout.js'
+// File: /Users/nike/Documents/SOFTWARE/CEN3031-Group-Project/nextJs/src/app/layout.tsx
+import * as entry from '../../../src/app/layout.js'
 import type { ResolvingMetadata } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
-type TEntry = typeof import('../../../app/layout.js')
+type TEntry = typeof import('../../../src/app/layout.js')
 
 // Check that the entry is a valid entry
 checkFields<Diff<{
