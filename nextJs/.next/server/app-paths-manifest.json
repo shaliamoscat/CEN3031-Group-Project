@@ -1,5 +1,6 @@
 {
   "/page": "app/page.js",
   "/dashboard/page": "app/dashboard/page.js",
+  "/api/trpc/[trpc]/route": "app/api/trpc/[trpc]/route.js",
   "/api/auth/[kindeAuth]/route": "app/api/auth/[kindeAuth]/route.js"
 }

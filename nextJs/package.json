@@ -54,6 +54,7 @@
     "react-hook-form": "^7.46.2",
     "react-loading-skeleton": "^3.3.1",
     "react-markdown": "^8.0.7",
+    "react-modal": "^3.16.1",
     "react-pdf": "^7.3.3",
     "react-resize-detector": "^9.1.0",
     "react-textarea-autosize": "^8.5.3",
@@ -70,8 +71,8 @@
   "devDependencies": {
     "@testing-library/jest-dom": "^6.1.4",
     "@testing-library/react": "^14.1.0",
+    "@types/react-modal": "^3.16.3",
     "chance": "^1.1.11",
     "cypress": "^13.5.0"
   }
 }
-

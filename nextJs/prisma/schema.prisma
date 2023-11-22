@@ -15,4 +15,23 @@ model User {
   id       String   @id @unique // same as kinde user id
   email    String   @unique
   joinedOn DateTime @map(name: "joined_on")
+  Streak   Streak[]
+}
+
+enum plantStage {
+  STAGE1
+  STAGE2
+  STAGE3
+  STAGE4
+  STAGE5
+}
+
+model Streak {
+  id          String     @id @unique
+  goalReached Boolean    @default(false) @map(name: "goal_reached")
+  updatedAt   DateTime   @default(now())
+  userId      String
+  minutes     Int        @default(0)
+  plantStage  plantStage @default(STAGE1)
+  User        User       @relation(fields: [userId], references: [id])
 }
