@@ -12,10 +12,11 @@ datasource db {
 }
 
 model User {
-  id       String   @id @unique // same as kinde user id
-  email    String   @unique
-  joinedOn DateTime @map(name: "joined_on")
-  Streak   Streak[]
+  id        String   @id @unique // same as kinde user id
+  email     String   @unique
+  joinedOn  DateTime @map(name: "joined_on")
+  Streak    Streak[]
+  netPoints Int      @default(0)
 }
 
 enum plantStage {

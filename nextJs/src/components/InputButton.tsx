@@ -9,6 +9,7 @@ const InputButton = () => {
   const { mutate: populateDb } = trpc.populateDb.useMutation({
     onSuccess: () => {
       utils.getUserStreak.invalidate();
+      utils.getUserPoints.invalidate();
     },
   });
 

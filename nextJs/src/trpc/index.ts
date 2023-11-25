@@ -44,6 +44,16 @@ export const appRouter = router({
             userId
         }
     }),
+    getUserPoints: privateProcedure.query(async ({ ctx }) => {
+        const { userId, user } = ctx;
+        if (!userId) throw new TRPCError({ code: 'UNAUTHORIZED' });
+        return await db.user.findUnique({
+            where: {
+                id: userId,
+            
+            }
+        })
+    }),
     // validate input by using zod - schema validation lib
     populateDb: privateProcedure.input(
         z.object({minutes: z.number() })).mutation(
@@ -54,11 +64,29 @@ export const appRouter = router({
                 const { minutes } = input;
 
                 if (!userId) throw new TRPCError({ code: 'UNAUTHORIZED' });
+
+                 // Fetch the user from the database
+                const user = await db.user.findUnique({ where: { id: userId } });
+
+                if (!user) throw new TRPCError({ code: 'NOT_FOUND' });
+
+                // Calculate the new netPoints value
+                const netPoints = user.netPoints + (minutes > 120 ? 30 : -30);
+
+                // Update the user's netPoints in the database
+                await db.user.update({
+                    where: { id: userId },
+                    data: { netPoints },
+                });
+
+                
                 // Create a new entry record in the database
                 const newEntry = await db.streak.create({
                     data: {
                         minutes: minutes,
-                    }
+                        goalReached: minutes>120,
+                    },
+                    
                 });
 
             
