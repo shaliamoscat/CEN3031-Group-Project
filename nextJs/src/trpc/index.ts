@@ -2,7 +2,7 @@ import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server';
 import { privateProcedure, publicProcedure, router } from './trpc';
 import { TRPCError } from '@trpc/server';
 import { db } from '@/db';
- 
+import { z } from 'zod';
 export const appRouter = router({
     authCallback: publicProcedure.query(async () => {
         const { getUser } = getKindeServerSession();
@@ -41,9 +41,31 @@ export const appRouter = router({
         
         return await db.streak.findMany()
         where: {
-                userId
-            }
+            userId
+        }
     }),
-})
+    // validate input by using zod - schema validation lib
+    populateDb: privateProcedure.input(
+        z.object({minutes: z.number() })).mutation(
+            async ({ ctx, input }) => {
+                const { userId } = ctx;
 
+                // Extract minutes from input
+                const { minutes } = input;
+
+                if (!userId) throw new TRPCError({ code: 'UNAUTHORIZED' });
+                // Create a new entry record in the database
+                const newEntry = await db.streak.create({
+                    data: {
+                        minutes: minutes,
+                    }
+                });
+
+            
+
+                // Return the newly created entry
+                return newEntry;
+            }
+    )
+})
 export type AppRouter = typeof appRouter;

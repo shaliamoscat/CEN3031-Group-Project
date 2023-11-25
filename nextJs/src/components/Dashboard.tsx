@@ -2,28 +2,10 @@
 import { trpc } from "@/app/_trpc/client";
 import Skeleton from "react-loading-skeleton";
 import { CheckCircle, CircleDashedIcon, CircleOff } from "lucide-react";
-
-// date formatting
-function formatDate(dateString: string) {
-  const date = new Date(dateString);
-  const day = String(date.getDate()).padStart(2, "0");
-  const month = String(date.getMonth() + 1).padStart(2, "0"); // Months are 0-based in JavaScript
-  const year = date.getFullYear();
-
-  // Get hours and minutes
-  const hours = date.getHours();
-  const minutes = String(date.getMinutes()).padStart(2, "0");
-
-  // Convert 24-hour time to 12-hour time
-  const twelveHourHours = hours % 12 || 12;
-  const amPm = hours < 12 ? "am" : "pm";
-
-  return `${day}-${month}-${year} ${twelveHourHours}:${minutes} ${amPm}`;
-}
+import { format } from "date-fns"; // date formatting
 
 const Dashboard = () => {
   const { data: streaks, isLoading } = trpc.getUserStreak.useQuery();
-
   // return (<div> Hello world </div>)
   return (
     <main className="mx-auto max-w-7xl md:p-10">
@@ -60,7 +42,7 @@ const Dashboard = () => {
                       {streak.goalReached ? <CheckCircle /> : <CircleOff />}
                     </td>
                     <td className="px-4 py-2 border-2 border-gray-500">
-                      {formatDate(streak.updatedAt)}
+                      {format(new Date(streak.updatedAt), "dd-MM-yyyy hh:mm a")}
                     </td>{" "}
                   </tr>
                 ))}
