@@ -10,11 +10,14 @@ jobs:
           name: Install Node.js and npm
           command: |
             curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
-            export NVM_DIR="$HOME/.nvm"
+            export NVM_DIR="/root/.nvm"
             [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
             nvm install node
             npm install -g npm
-            npm --version
+            echo "Node version: $(node --version)"
+            echo "NPM version: $(npm --version)"
+            export PATH=$PATH:$(npm bin -g)
+            echo "Updated PATH: $PATH"
       - run:
           name: Install dependencies and build project
           command: |
