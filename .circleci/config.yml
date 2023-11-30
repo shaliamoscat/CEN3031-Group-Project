@@ -12,9 +12,9 @@ jobs:
       - run:
           name: Install dependencies and build project
           command: |
-            cd /nextJS/src
-            npm install
-            npm run
+            cd nextJS/src
+            npm install && npm install next
+            npm run next dev
       - sonarcloud/scan
 
 orbs:
