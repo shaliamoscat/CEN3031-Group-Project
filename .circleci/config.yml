@@ -7,6 +7,9 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Show Current Directory
+          command: ls  # or pwd
+      - run:
           name: Install dependencies and build project
           command: |
             cd /nextJS/src
