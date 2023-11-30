@@ -8,7 +8,10 @@ jobs:
       - checkout
       - run:
           name: Install dependencies and build project
-          command: npm install
+          command: |
+            cd /nextJS/src
+            npm install
+            npm run
       - sonarcloud/scan
 
 orbs:
