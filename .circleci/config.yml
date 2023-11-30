@@ -14,6 +14,8 @@ jobs:
             [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
             nvm install node
             npm install -g npm
+            echo 'export PATH=$PATH:/root/.nvm/versions/node/v18.18.1/bin/' >> $BASH_ENV
+            source $BASH_ENV
       - run:
           name: Install dependencies and build project
           command: |
