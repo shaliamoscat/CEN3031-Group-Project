@@ -14,10 +14,6 @@ jobs:
             [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
             nvm install node
             npm install -g npm
-            echo "Node version: $(node --version)"
-            echo "NPM version: $(npm --version)"
-            export PATH=$PATH:$(npm bin -g)
-            echo "Updated PATH: $PATH"
       - run:
           name: Install dependencies and build project
           command: |
