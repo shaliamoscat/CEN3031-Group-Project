@@ -18,7 +18,8 @@ jobs:
           command: |
             cd nextJs/src
             npm install && npm install next
-            npm run next dev
+            next build
+            next dev
       - sonarcloud/scan
 
 orbs:
