@@ -1,0 +1,61 @@
+create table users
+    (username varchar(30) not null,
+    password varchar(30) not null,
+    name varchar(30) not null,
+    primary key(username));
+    
+create table activities
+    (day date not null,
+    activityID int not null,
+    minutes int not null,
+    username varchar(30) not null,
+    primary key (activityID));
+
+insert into users
+    values('firstuser', '1234', 'Dummy User');
+insert into users
+    values('2ndusr', 'pass!', 'Next User');
+insert into users
+    values('3rdus3r!', 'pass_word', 'Last User');
+
+insert into activities
+    values(date '2023-11-13', 1, 30, 'firstuser');
+insert into activities
+    values(date '2023-10-11', 2, 45, 'firstuser');
+insert into activities
+    values(date '2023-11-08', 3, 25, '2ndusr');
+insert into activities
+    values(date '2023-11-13', 4, 120, '3rdus3r!');
+insert into activities
+    values(date '2023-11-12', 5, 5, '2ndusr');
+insert into activities
+    values(date '2023-11-13', 6, 0, 'firstuser');
+insert into activities
+    values(date '2023-11-10', 7, 30, '3rdus3r');
+    
+select username, minutes, day
+    from activities
+    where username = 'firstuser'
+    and day = date '2023-11-13';
+    
+select username, sum(minutes)
+    from activities
+    where username = 'firstuser'
+    group by username
+    having sum(minutes) > 0;
+    
+select username, sum(minutes)
+    from activities
+    where username = '2ndusr'
+    and day 
+    group by username
+    having sum(minutes) > 0;
+    
+select * from activities;
+select * from users;
+
+select activities.username, day, minutes
+    from users, activities
+    where users.username = 'firstuser'
+    and password = '1234'
+    and users.username = activities.username;
