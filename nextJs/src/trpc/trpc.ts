@@ -1,6 +1,7 @@
 import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server';
 import { TRPCError, initTRPC } from '@trpc/server';
- 
+// from https://trpc.io/docs/quick-start
+// file contains api logic
 /**
  * Initialization of tRPC backend
  * Should be done only once per backend!

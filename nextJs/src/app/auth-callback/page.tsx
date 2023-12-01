@@ -2,12 +2,13 @@
 import { useRouter, useSearchParams } from "next/navigation";
 import { trpc } from "../_trpc/client";
 
+// referenced https://youtu.be/ucX2zXAZ1I0 to setup auth callback
 const Page = () => {
   const router = useRouter();
   // to get access to origin that we pass as a query param
   // in dashboard page use useRouter
-  const searchParams = useSearchParams();
-  const origin = searchParams.get("origin");
+  const parameter = useSearchParams();
+  const origin = parameter.get("origin");
 
   // orgin = dashboard
   // reg nextjs will return api fetch response of type any
