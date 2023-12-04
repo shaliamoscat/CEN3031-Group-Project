@@ -8,11 +8,11 @@ import Image from "next/image";
 const Dashboard = () => {
   const { data: streaks, isLoading } = trpc.getUserStreak.useQuery();
   const { data: user } = trpc.getUserPoints.useQuery();
-  let flowerImage = "/Flower1.jpg";
-  if (user?.netPoints && user.netPoints > 10) flowerImage = "/Flower2.jpg";
-  if (user?.netPoints && user.netPoints > 30) flowerImage = "/Flower3.jpg";
-  if (user?.netPoints && user.netPoints > 50) flowerImage = "/Flower4.jpg";
-  if (user?.netPoints && user.netPoints > 70) flowerImage = "/Flower5.jpg";
+  let flowerImage = "/tree_0.png";
+  if (user?.netPoints && user.netPoints > 10) flowerImage = "/tree_0.png";
+  if (user?.netPoints && user.netPoints > 30) flowerImage = "/tree_1.png";
+  if (user?.netPoints && user.netPoints > 50) flowerImage = "/tree_2.png";
+  if (user?.netPoints && user.netPoints >= 70) flowerImage = "/tree_3.png";
   // return (<div> Hello world </div>)
   return (
     <main className="mx-auto max-w-7xl md:p-10">
@@ -24,10 +24,11 @@ const Dashboard = () => {
         <div className="mt-16 flow-root sm:mt-24">
           <div>
             <Image
+              className="mx-auto"
               // src="/Flower.jpg"
               src={flowerImage}
-              width={1000}
-              height={1000}
+              width={500}
+              height={500}
               quality={100}
               alt="AeroGrow starter plant"
             />
