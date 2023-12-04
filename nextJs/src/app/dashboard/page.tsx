@@ -4,6 +4,7 @@ import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { redirect } from "next/navigation";
 
 const Page = async () => {
+  // get current login session
   const { getUser } = getKindeServerSession();
   const user = getUser();
 
