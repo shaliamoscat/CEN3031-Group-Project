@@ -10,14 +10,16 @@ const Page = async () => {
 
   if (!user || !user.id) redirect("/auth-callback?origin=dashboard");
 
+  // checks if user exists in the database
   const userDb = await db.user.findFirst({
     where: {
       id: user.id,
     },
   });
-  // if not in database
+  // if user logs in for the first time and is not in database
+  // they will be redirected to the auth-callback page where
+  // the user will be synced to the db
   if (!userDb) redirect("/auth-callback?origin=dashboard");
   return <Dashboard />;
-  // return <div>{user.email}</div>
 };
 export default Page;

@@ -1,7 +1,7 @@
 "use client";
 import { useRouter, useSearchParams } from "next/navigation";
 import { trpc } from "../_trpc/client";
-
+// syncs user if they are not in the db to the database
 // referenced https://youtu.be/ucX2zXAZ1I0 to setup auth callback
 const Page = () => {
   const router = useRouter();
@@ -13,13 +13,14 @@ const Page = () => {
   // orgin = dashboard
   // reg nextjs will return api fetch response of type any
   // is not type safe
-  // tRPC will ensure typesafety for fetch operations
+  // tRPC will ensure typesafety for fetch operations from backend
 
-  // const apiResponse = await fetch('/api/whatever')
-  // const data = await apiResponse.json()
   trpc.authCallback.useQuery(undefined, {
     onSuccess: ({ success }) => {
+      // user is in db
       if (success) {
+        // send user back to where they came from
+        // if there was no origin send them to dashboard
         router.push(origin ? `/${origin}` : "/dashboard");
       }
     },

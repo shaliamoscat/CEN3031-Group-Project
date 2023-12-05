@@ -27,6 +27,8 @@ enum plantStage {
   STAGE5
 }
 
+// Streak model stores information about user streak
+// whether or not they reached their goal etc.
 model Streak {
   id          String     @id @default(cuid())
   goalReached Boolean    @default(false) @map(name: "goal_reached")

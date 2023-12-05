@@ -6,6 +6,7 @@ import { LoginLink, RegisterLink } from "@kinde-oss/kinde-auth-nextjs/server";
 // tailwind classnames referenced from https://youtu.be/ucX2zXAZ1I0
 const Navbar = () => {
   return (
+    // sticky ensures navbar is always on top of the page
     <nav className="sticky h-14 inset-x-0 top-0 z-30 w-full border-b border-gray-200 bg-white/75 backdrop-blur-lg transition-all">
       <MaxWidthWrapper>
         <div className="flex h-14 items-center justify-between border-b border-zinc-200">
@@ -25,6 +26,7 @@ const Navbar = () => {
                 {" "}
                 Streaks{" "}
               </Link>
+              {/* login and register links come from Kinde Auth pckg */}
               <LoginLink
                 className={buttonVariants({
                   size: "sm",

@@ -4,10 +4,12 @@ import { TRPCError } from '@trpc/server';
 import { db } from '@/db';
 import { z } from 'zod';
 
-// declaring api route 
-// referred from https://trpc.io/docs/quick-start
+// declaring api route - main router instance  (appRouter)
+// we will add procedures here 
+// referred from https://trpc.io/docs/quickstart
 export const appRouter = router({
     authCallback: publicProcedure.query(async () => {
+        // get request to see if user is in db or not
         const { getUser } = getKindeServerSession();
         const user = getUser();
 
@@ -74,7 +76,7 @@ export const appRouter = router({
                 if (!user) throw new TRPCError({ code: 'NOT_FOUND' });
 
                 // Calculate the new netPoints value
-                const netPoints = user.netPoints + (minutes > 120 ? 30 : -30);
+                const netPoints = user.netPoints + (minutes > 149 ? 30 : -30);
 
                 // Update the user's netPoints in the database
                 await db.user.update({
@@ -87,7 +89,8 @@ export const appRouter = router({
                 const newEntry = await db.streak.create({
                     data: {
                         minutes: minutes,
-                        goalReached: minutes>120,
+                        // if minutes >= 150 then goal is Reached
+                        goalReached: minutes>149,
                     },
                     
                 });

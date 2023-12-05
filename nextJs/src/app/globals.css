@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
  
+/* from ui.chadcn.com */
 @layer base {
   :root {
     --background: 0 0% 100%;

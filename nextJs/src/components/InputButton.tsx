@@ -4,18 +4,22 @@ import InputModal from "./InputPopup";
 import { trpc } from "@/app/_trpc/client";
 
 const InputButton = () => {
+  // initial state is set as false, so popup is not open
   const [isPopUp, setIsPopUp] = useState(false);
-  const utils = trpc.useContext();
+  const utils = trpc.useContext(); //useContext function from tRPC
+  // after submit button is clicked, the minutes is passed to populateDb
   const { mutate: populateDb } = trpc.populateDb.useMutation({
     onSuccess: () => {
+      // invalidate forces reloading the values in the table
       utils.getUserStreak.invalidate();
       utils.getUserPoints.invalidate();
     },
   });
 
   const popupSubmit = (minutes: number) => {
-    populateDb({ minutes: minutes });
-    setIsPopUp(false);
+    // on clicking submit, populateDb is called
+    populateDb({ minutes: minutes }); // with minutes as input parameter
+    setIsPopUp(false); // popUp closed
   };
   return (
     <>
@@ -24,8 +28,7 @@ const InputButton = () => {
           size: "lg",
           className: "mt-6 mr-5",
         })}
-        // href="dashboard"
-        // target="_blank"
+        // when button is clicked, popUp opens
         onClick={() => setIsPopUp(true)}
       >
         Enter the minutes exercised today

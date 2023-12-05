@@ -1,3 +1,4 @@
+// referenced config file from https://youtu.be/ucX2zXAZ1I0
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ["class"],
