@@ -18,9 +18,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
+    // setting light mode
     <html lang="en" className="light">
       <Providers>
         <body
+          // every page should be atleast 100vh - set with min-h-screen
+          // antialiased is used for font smoothing
           className={cn("min-h-screen font-sans antialiased", inter.className)}
         >
           <Navbar />

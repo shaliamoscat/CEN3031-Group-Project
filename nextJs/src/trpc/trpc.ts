@@ -1,13 +1,13 @@
 import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server';
 import { TRPCError, initTRPC } from '@trpc/server';
-// from https://trpc.io/docs/quick-start
+// from https://trpc.io/docs/quickstart
 // file contains api logic
 /**
  * Initialization of tRPC backend
  * Should be done only once per backend!
  */
 const t = initTRPC.create();
- const middleware = t.middleware
+const middleware = t.middleware
 const AuthCheck = middleware(async (opts) => {
     const { getUser } = getKindeServerSession()
     const user = getUser()

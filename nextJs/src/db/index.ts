@@ -1,5 +1,5 @@
 import { PrismaClient } from '@prisma/client'
-
+// prisma instantian code setup documentation 
 declare global {
   // eslint-disable-next-line no-var
   var cachedPrisma: PrismaClient
